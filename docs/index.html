@@ -37,7 +37,7 @@ const productos = [
   { cod: "7862113813839", nombre: "VITASWEET MONK FRUIT GOTAS 140 ML", pvp: "$12,90", dist: "$8,60", costo: "$3,88", margen: "54,88%" },
   { cod: "7862113813440", nombre: "VITASWEET MONK FRUIT x 50 GR", pvp: "$4,80", dist: "$3,20", costo: "$1,75", margen: "45,31%" },
   { cod: "7862113813457", nombre: "VITASWEET MONK FRUIT x 100 GR", pvp: "$8,40", dist: "$5,60", costo: "$3,31", margen: "40,89%" },
-  { cod: "7862113814201", nombre: "VITASWEET MONK FRUIT REPOSTERIA HORNEAR Y COCINAR 380GR", pvp: "$16,00", dist: "$10,67", costo: "$4,73", margen: "55,66%" }
+  { cod: "7862113814201", nombre: "VITASWEET MONK FRUIT REPOSTERIA HORNEAR Y COCINAR 380GR", pvp: "$16,00", dist: "$10,67", costo: "$4,73", margen: "55,66%" },
   { cod: "7862113815802", nombre: "VITASTEVIA 25 GR", pvp: "$1,25", dist: "$0,83", costo: "$0,47", margen: "43,60%" },
   { cod: "7862113815819", nombre: "VITASTEVIA 50 GR", pvp: "$2,11", dist: "$1,41", costo: "$0,92", margen: "34,60%" },
   { cod: "7862113815826", nombre: "VITASTEVIA 100 GR", pvp: "$3,67", dist: "$2,45", costo: "$1,74", margen: "28,88%" },
@@ -77,7 +77,7 @@ const productos = [
   { cod: "7862113815369", nombre: "VITAKIDS SHAKE VITAMINAS Y MINERALES CON AVENA Y PROTEINA DE SUERO DE LECHE TARRO 500 GR", pvp: "$24,90", dist: "$16,60", costo: "$9,92", margen: "40,24%" },
   { cod: "7862113815970", nombre: "VITAKIDS SHAKE VITAMINAS Y MINERALES CON AVENA Y PROTEINA DE SUERO DE LECHE TARRO 400 GR", pvp: "$19,76", dist: "$13,17", costo: "$5,40", margen: "59,01%" },
   { cod: "7862113815451", nombre: "VITAKIDS SHAKE VITAMINAS Y MINERALES CON AVENA Y PROTEINA DE SUERO DE LECHE FUNDA 200 GR", pvp: "$12,75", dist: "$8,50", costo: "$4,00", margen: "52,94%" },
-  { cod: "7862113812436", nombre: "VITAKIDS JARABE 120ML", pvp: "$6,47", dist: "$4,31", costo: "$1,28", margen: "70,32%" }
+  { cod: "7862113812436", nombre: "VITAKIDS JARABE 120ML", pvp: "$6,47", dist: "$4,31", costo: "$1,28", margen: "70,32%" },
   { cod: "7862113813402", nombre: "VITAKIDS COMPLEX JARABE x 120 ML", pvp: "$6,47", dist: "$4,31", costo: "$1,05", margen: "75,65%" },
   { cod: "7862113814102", nombre: "VITAKIDS CD ZINC JARABE x 120 ML", pvp: "$7,70", dist: "$5,13", costo: "$0,95", margen: "81,50%" },
   { cod: "7862113813280", nombre: "VITAMINA C VITAMINA D3 Y ZINC, VF NUTRICIÓN X 120 ML", pvp: "$7,70", dist: "$5,13", costo: "$0,82", margen: "84,03%" },
@@ -146,13 +146,17 @@ function renderProducts(lista) {
     card.style.background = "#fff";
     card.style.boxShadow = "0 2px 5px rgba(0,0,0,0.1)";
 
+    // Si no hay imagen, usar placeholder
+    const imgSrc = p.img ? p.img : "https://via.placeholder.com/150?text=Sin+Imagen";
+
     card.innerHTML = `
-      <img src="${p.img}" alt="${p.nombre}" style="max-width:100%;height:150px;object-fit:contain;margin-bottom:10px;">
+      <img src="${imgSrc}" alt="${p.nombre}" style="max-width:100%;height:150px;object-fit:contain;margin-bottom:10px;">
       <h3 style="font-size:16px;margin:5px 0;">${p.nombre}</h3>
       <p><b>Código:</b> ${p.cod}</p>
       <p><b>PVP:</b> ${p.pvp}</p>
-      <p><b>PVF:</b> ${p.pvf}</p>
       <p><b>Distribuidor:</b> ${p.dist}</p>
+      <p><b>Costo:</b> ${p.costo}</p>
+      <p><b>Margen:</b> ${p.margen}</p>
     `;
 
     results.appendChild(card);
